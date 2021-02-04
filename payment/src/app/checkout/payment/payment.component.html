@@ -1,0 +1,43 @@
+<h3>Card Details</h3>
+<form class="example-form" [formGroup]="cardForm"  (ngSubmit)="saveCard()">
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Card Holder</mat-label>
+        <input matInput placeholder="Ex: William Smith"  maxlength="20" formControlName="name" />
+        <mat-error *ngIf="cardForm.get('name').invalid">*Required</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Card Number</mat-label>
+        <input matInput formControlName="number" (keydown)="cardNumFormat($event);" maxlength="19" placeholder="Ex: 4455 8888 xxxx xxxx" />
+        <mat-error *ngIf="cardForm.get('number').invalid">*Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="margin-2r" appearance="outline">
+        <mat-label>Expiry</mat-label>
+        <input matInput [min]="today" readonly formControlName="expiry" [matDatepicker]="dp">
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp
+                        startView="multi-year"
+                        (yearSelected)="chosenYearHandler($event)"
+                        (monthSelected)="chosenMonthHandler($event, dp)"
+                        panelClass="example-month-picker">
+        </mat-datepicker>
+        <mat-error *ngIf="cardForm.get('expiry').invalid">*Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="margin-2r" appearance="outline">
+        <mat-label>CVC</mat-label>
+        <input formControlName="cvv" (keydown)="numberOnly($event);" maxlength="3" matInput placeholder="Ex: 445">
+        <mat-error *ngIf="cardForm.get('cvv').invalid">*Required</mat-error>
+    </mat-form-field>
+    <div class="button-container">
+        <button *ngIf="!isLoading"  mat-flat-button color="accent">Save Card</button>
+        <mat-spinner 
+        *ngIf="isLoading"
+        [color]="'accent'"
+        diameter="30"
+        >
+    </mat-spinner>
+        <button type="button" style="z-index: 10;" (click)="reset()" mat-flat-button>Reset</button>
+    </div>
+</form>

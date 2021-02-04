@@ -1,0 +1,44 @@
+<button (click)="routeTo('pay')">Route</button>
+<div class="form-container">
+    <div class="card-section">
+        <div *ngIf="card | async as c" class="db-card">
+            <div class="front">
+                <h4 class="card-title">Debit Card</h4>
+                <div class="card-chip">
+                    <img class="chip-card" src="../assets/images/debit_card_chip.png" alt="smart_chip"/>
+                </div>
+                <div class="card-number">
+                    <h4>{{c.number}}</h4>
+                </div>
+                <div class="flex card-bottom">
+                    <div class="flex card-details">
+                        <span  style="min-width: 25%;">
+                            <div>Expires at</div>
+                            <div>{{c.expiry}}</div>
+                        </span>
+                        <span class="card-name">{{c.name}}</span>
+                    </div>
+                    <div class="card-logo">
+                        <img src="../assets/images/visa_logo.png" alt="card-logo" />
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div class="black-strap"></div>
+                <div class="cvv-bar">
+                    <div class="white-strap"></div>
+                    <div class="cvv-container">{{c.cvv}}</div>
+                </div>
+                <div class="card-logo">
+                    <img src="../assets/images/visa_logo.png" alt="card-logo" />
+                </div>
+            </div>
+        </div>
+        <button class="float-top-right" #tooltip="matTooltip" matTooltip="Flip the card" color="primary" (click)="rotateCard()" mat-mini-fab aria-label="rotate card">
+            <mat-icon>rotate_right</mat-icon>
+          </button>
+    </div>
+    <div class="form-section">
+        <router-outlet></router-outlet>
+    </div>
+</div>

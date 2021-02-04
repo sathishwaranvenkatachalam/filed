@@ -1,0 +1,33 @@
+h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1c8ae6;
+}
+
+.full-width {
+    width : 100%
+}
+mat-form-field {
+    width : 40%;
+    margin-bottom: 0.5rem;
+}
+
+.margin-2r {
+    margin-right: 2rem;
+}
+
+
+.margin-2r:first-child {
+    margin-left: 0px !important;
+}
+
+.margin-2r:last-child {
+    margin-right: 0px !important;
+}
+
+.button-container {
+    display: flex;
+    button {
+        margin-right: 1rem;
+    }
+}

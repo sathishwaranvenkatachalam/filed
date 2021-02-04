@@ -1,0 +1,147 @@
+.form-container {
+    margin : 5% auto;
+    width : 60vw;
+    display : flex;
+    border-radius: 15px;
+    overflow:hidden;
+    box-shadow: 0px 20px 40px rgba(14,14,208,0.2);
+    .card-section  {
+        padding: 5% 2rem;
+        background: #1c8ae6;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    .form-section {
+        padding: 2rem;
+    }
+}
+
+.full-width {
+    width : 100%;
+}
+
+.db-card {
+    width:25vw;
+    height: 30vh;
+    position: relative;
+    background-image: url('../assets/images/card-background.jpg');
+    border-radius:15px;
+    box-shadow: 0px 8px 40px rgba(14,14,208,0.4);
+    padding: 1rem 2rem;
+    transition: transform 2s;
+    .back {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 1;
+        transform: rotateY(180deg);
+        transition: opacity 1s,z-index 1s;
+    }
+    .front {
+        opacity: 1;
+        position: relative;
+        transition:  opacity 1s,z-index 1s;
+
+    }
+    .card-title {
+        text-align: right;
+    }
+    &.rotate180 {
+        transform: rotateY(180deg);
+        .front {
+            z-index: 1;
+            opacity: 0;
+        }
+        .back {
+            z-index: 10;
+            opacity: 1;
+            transition-delay: 1s;
+        }
+    }
+}
+
+
+.chip-card {
+    width : 15%;
+}
+
+.card-number {
+    h4 {
+        margin: 1rem 0px 0.5rem;
+        font-weight: 800;
+        font-size: 1.5rem;
+        letter-spacing: 0.2em;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.card-bottom {
+    .card-details {
+        width: 70%;
+        align-items: center;
+        .card-name {
+            margin: 0px 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    .card-logo {
+        width: 30%;
+        padding: 5% 0%;
+        img {
+            width: 90%;
+        }
+    }
+}
+
+.float-top-right {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    z-index: 100;
+}
+
+.black-strap {
+    display: block;
+    background: #000;
+    width: 100%;
+    margin-top: 5%;
+    height: 3rem;
+
+}
+
+.cvv-bar {
+    margin: 1rem 2rem;
+    display: flex;
+    justify-items: center;
+    .white-strap {
+        width: 100%;
+        height:2rem;
+        background: #eeeeee;
+    }
+    .cvv-container {
+        background: #ddd;
+        padding: 0px 10px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.card-logo {
+    display: flex;
+    justify-content: flex-end;
+    img {
+        margin-top: 1rem;
+        width: 40%;
+    }
+}
